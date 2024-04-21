@@ -1,21 +1,21 @@
 import requests
 import os
 
-series_directory = "C:\\Users\\iamno\\Videos\\BoM"
+series_directory = "C:/Users/iamno/Videos/BoM"
 series_id = '7415b72b4f0d454a96ed4ccda89194b8'
 
 
 def handle_season(data):
     title = data['title']
     print('  ' + str(title))
-    season_directory = series_directory + "\\" + title
+    season_directory = series_directory + "/" + title
     mkdir(season_directory)
     img_response = requests.get(data['coverImage']['src'])
-    img_path = season_directory + "\\" + title + ".jpg"
+    img_path = season_directory + "/" + title + ".jpg"
     if img_response.ok:
         with open(img_path, "wb") as img_file:
             img_file.write(img_response.content)
-    nfo_path = season_directory + "\\season.nfo"
+    nfo_path = season_directory + "/season.nfo"
     with open(nfo_path, "w") as nfo_file:
         nfo_file.write('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n');
         nfo_file.write('<tvshow>\n');
@@ -31,17 +31,17 @@ def handle_season(data):
 def handle_episode(data, season_dir, episode_number):
     title = data['title']
     print('    ' + str(title))
-    img_path = season_dir + '\\episode' + str(episode_number) + '.jpg'
+    img_path = season_dir + '/episode' + str(episode_number) + '.jpg'
     img_response = requests.get(data['coverImage']['src'])
     if img_response.ok:
         with open(img_path, "wb") as img_file:
             img_file.write(img_response.content)
-    vid_path = season_dir + '\\episode' + str(episode_number) + '.mp4'
+    vid_path = season_dir + '/episode' + str(episode_number) + '.mp4'
     vid_response = requests.get(data['downloads'][2]['url'])
     if vid_response.ok:
         with open(vid_path, "wb") as vid_file:
             vid_file.write(vid_response.content)
-    nfo_path = season_dir + '\\episode' + str(episode_number) + '.nfo'
+    nfo_path = season_dir + '/episode' + str(episode_number) + '.nfo'
     with open(nfo_path, "w") as nfo_file:
         nfo_file.write('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n');
         nfo_file.write('<episode>\n');
