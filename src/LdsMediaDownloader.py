@@ -1,5 +1,6 @@
 import requests
 import os
+from NfoFile import write_season_nfo, write_episode_nfo 
 
 def handle_season(series_directory, data):
     title = data['title']
@@ -12,13 +13,7 @@ def handle_season(series_directory, data):
         with open(img_path, "wb") as img_file:
             img_file.write(img_response.content)
     nfo_path = season_directory + "/season.nfo"
-    with open(nfo_path, "w") as nfo_file:
-        nfo_file.write('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n');
-        nfo_file.write('<tvshow>\n');
-        nfo_file.write('  <name>' + title + '</name>\n');
-        nfo_file.write('  <genre>Religious</genre>\n');
-        nfo_file.write('  <thumb>' + title + '.jpg</thumb>\n');
-        nfo_file.write('</tvshow>\n');
+    write_season_nfo(nfo_path, title)
     episode_listing = get_collection_json(data['id'])
     for index, episode_data in enumerate(episode_listing['items']):
         handle_episode(episode_data, season_directory, index + 1)
@@ -38,14 +33,7 @@ def handle_episode(data, season_dir, episode_number):
         with open(vid_path, "wb") as vid_file:
             vid_file.write(vid_response.content)
     nfo_path = season_dir + '/episode' + str(episode_number) + '.nfo'
-    with open(nfo_path, "w") as nfo_file:
-        nfo_file.write('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n');
-        nfo_file.write('<episode>\n');
-        nfo_file.write('  <name>' + title + '</name>\n');
-        nfo_file.write('  <plot>' + data['description'] + '</plot>\n');
-        nfo_file.write('  <genre>Religious</genre>\n');
-        nfo_file.write('  <thumb>episode' + str(episode_number) + '.jpg</thumb>\n');
-        nfo_file.write('</episode>\n');
+    #write_episode_nfo(nfo_path, 
 
 def get_collection_json(collection_id):
     response = requests.get('https://www.churchofjesuschrist.org/media/api/v2/asset/collection?lang=eng&context=published&titanId=' + collection_id + '&limit=48&offset=0&childrenOnly=true')

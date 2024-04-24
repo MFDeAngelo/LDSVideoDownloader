@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tvshow>
+  <title>The Bible Videos</title>
+  <plot>It is about the life of christ</plot>
+  <genre>Religious</genre>
+  <season>5</season>
+  <displayseason>The name of the season</displayseason>
+  <episode>10</episode>
+  <displayepisode>The name of the episode</displayepisode>
+</tvshow>
