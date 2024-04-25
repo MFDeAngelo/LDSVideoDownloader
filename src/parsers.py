@@ -1,8 +1,8 @@
-from data_types import Episode
-
+#from data_types import Episode
+import data_types
 
 def parse_episode(json):
-    return Episode(
+    return data_types.Episode(
             title = json['title'],
             description = json['description'],
             image_url = json['coverImage']['src'],
@@ -11,4 +11,8 @@ def parse_episode(json):
 
 
 def parse_season(json):
-    pass
+    return data_types.Season(
+            id = json['id'],
+            title = json['title'],
+            image_url = json['coverImage']['src']
+            )
