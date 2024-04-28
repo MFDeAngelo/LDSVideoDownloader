@@ -1,5 +1,4 @@
-#from data_types import Episode
-import data_types
+from . import data_types
 
 def parse_episode(json):
     return data_types.Episode(

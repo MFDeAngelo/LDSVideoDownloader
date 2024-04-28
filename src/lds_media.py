@@ -1,6 +1,6 @@
-from parsers import parse_episode, parse_season, parse_series
-import download
-import handle
+from .parsers import parse_episode, parse_season, parse_series
+from . import download
+from . import handle
 
 def start(directory, id):
     print('Downloading LDS content')

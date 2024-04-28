@@ -1,6 +1,6 @@
 import os
-from nfo_file import write_series_nfo, write_season_nfo, write_episode_nfo 
-import download
+from .nfo_file import write_series_nfo, write_season_nfo, write_episode_nfo 
+from . import download
 
 def season(directory, season):
     print('  ' + str(season.title))
@@ -24,7 +24,7 @@ def series(directory, series):
     mkdir(directory)
     img_path = f'{directory}/{series.title}.jpg'
     download.asset(series.image_url, img_path)
-    nfo_path = f'{directory}/series.nfo'
+    nfo_path = f'{directory}/tvshow.nfo'
     write_series_nfo(nfo_path, series)
 
 def mkdir(path):

@@ -1,13 +1,12 @@
-
 genre = 'Religion'
 
-def write_season_nfo(nfo_path, title):
+def write_season_nfo(nfo_path, season):
     with open(nfo_path, "w") as nfo_file:
         nfo_file.write('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n');
         nfo_file.write('<tvshow>\n');
-        nfo_file.write('  <name>' + title + '</name>\n');
+        nfo_file.write('  <name>' + season.title + '</name>\n');
         nfo_file.write('  <genre>Religious</genre>\n');
-        nfo_file.write('  <thumb>' + title + '.jpg</thumb>\n');
+        nfo_file.write('  <thumb>' + season.title + '.jpg</thumb>\n');
         nfo_file.write('</tvshow>\n');
 
 def write_episode_nfo(nfo_path, episode):

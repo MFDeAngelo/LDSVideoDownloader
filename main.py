@@ -10,7 +10,7 @@ parser = argparse.ArgumentParser(
         epilog="Author: Matthew F DeAngelo")
 
 parser.add_argument("--directory", required=True)
-parser.add_argument("--collection-id")
+parser.add_argument("--collection-id", required=True)
 
 args = parser.parse_args()
 
