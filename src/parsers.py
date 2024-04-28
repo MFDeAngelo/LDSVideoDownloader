@@ -9,9 +9,15 @@ def parse_episode(json):
             video_url = json['downloads'][2]['url']
             )
 
-
 def parse_season(json):
     return data_types.Season(
+            id = json['id'],
+            title = json['title'],
+            image_url = json['coverImage']['src']
+            )
+
+def parse_series(json):
+    return data_types.Series(
             id = json['id'],
             title = json['title'],
             image_url = json['coverImage']['src']

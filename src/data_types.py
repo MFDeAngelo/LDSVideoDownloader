@@ -26,3 +26,13 @@ class Season:
         self.title = title
         self.image_url = image_url
 
+@dataclass
+class Series:
+    id: str
+    title: str
+    image_url: str
+
+    def __init__(self, id:str, title:str, image_url:str):
+        self.id = id
+        self.title = title
+        self.image_url = image_url

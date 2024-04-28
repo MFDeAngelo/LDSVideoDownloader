@@ -18,3 +18,6 @@ def json(url):
 
 def collection_json(collection_id):
     return json('https://www.churchofjesuschrist.org/media/api/v2/asset/collection?lang=eng&context=published&titanId=' + collection_id + '&limit=48&offset=0&childrenOnly=true')
+
+def top_level_collection_json():
+    
